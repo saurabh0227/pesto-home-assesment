@@ -3,7 +3,6 @@ const TaskModel = require('./model');
 exports.addTask = async (req, res) => {
   try {
     const body = req.body;
-    console.log('body', body);
     const task = await TaskModel.create(body);
     return res.status(201).send({
       status: true,

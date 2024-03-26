@@ -8,7 +8,6 @@ module.exports = (async () => {
     await mongoose.connect(mongo_uri, {
       useNewUrlParser: true,
       useUnifiedTopology: true
-      // debug: true,
     });
     // listen for requests
     console.log(`MongoDB Conected to ${mongo_uri}`);
