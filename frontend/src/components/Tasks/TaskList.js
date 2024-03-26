@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Task from './Task';
 
-const TaskList = ({ tasks, onDelete, onUpdate }) => {
+const TaskList = ({ tasks, onDelete, onUpdate, onFilter }) => {
   const [filter, setFilter] = useState('All');
   const statusOptions = ['All', 'To Do', 'In Progress', 'Done'];
 
@@ -10,6 +10,7 @@ const TaskList = ({ tasks, onDelete, onUpdate }) => {
 
   const handleChangeFilter = (e) => {
     setFilter(e.target.value);
+    onFilter(e.target.value);
   };
 
   return (

@@ -21,7 +21,7 @@ const Task = ({ task, onDelete, onUpdate }) => {
   };
 
   const handleDeleteButton = () => {
-    onDelete(task.id);
+    onDelete(task._id);
   };
 
   const handleEditButton = () => {
