@@ -4,15 +4,20 @@ const TaskForm = ({ onSubmit }) => {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [status, setStatus] = useState('To Do');
+  const [titleError, setTitleError] = useState('');
 
   const statusOptions = ['To Do', 'In Progress', 'Done'];
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!title.trim() || !description.trim()) return;
+    if (!title.trim()) {
+      setTitleError('Title cannot be empty');
+      return;
+    }
     onSubmit({ title, description, status: status });
     setTitle('');
     setDescription('');
+    setTitleError('');
   };
 
   return (
@@ -22,8 +27,12 @@ const TaskForm = ({ onSubmit }) => {
         type="text"
         placeholder="Title"
         value={title}
-        onChange={(e) => setTitle(e.target.value)}
+        onChange={(e) => {
+          setTitle(e.target.value);
+          setTitleError('');
+        }}
       />
+      {titleError && <p className="text-red-500">{titleError}</p>}
       <textarea
         className="flex ml-2"
         placeholder="Description"
